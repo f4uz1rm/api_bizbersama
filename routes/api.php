@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\Products\CategoryProductsController;
+use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::controller(CategoryProductsController::class)->group(function () {
-    Route::get('category', 'category')->name('category');
-});
+
+Route::get('category', [CategoryController::class, 'category'])->name('category');
+Route::get('image', [ImageController::class, 'image'])->name('image');
+
